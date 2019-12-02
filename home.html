@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello golang</title>
+</head>
+<body>
+<h1>你好</h1>
+<button id="send">点击！</button>
+</body>
+<script>
+    ws = new WebSocket("ws://127.0.0.1:8080/echo");
+    ws.onopen = function(evt) {
+        console.log('open')
+    };
+    ws.onmessage = function(evt) {
+        console.log(evt)
+    };
+    ws.onerror = function(evt) {
+        console.log(evt)
+    };
+    document.getElementById("send").onclick = function(evt) {
+        if (!ws) {return false;}
+        ws.send("asdasd");
+        return;
+    };
+</script>
+</html>
